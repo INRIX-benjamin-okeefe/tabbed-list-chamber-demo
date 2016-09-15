@@ -1,0 +1,12 @@
+{
+    "id"          : "sdk.user.tabbed-list-chamber",
+    "name"        : "tabbed-list-chamber",
+    "css"         : [ "appStylesheet.css" ],
+    "template"    : "appLayout.html",
+    "view"        : "appView.js",
+    "controller"  : "appController.js",
+    "permissions" : [ ],
+    "categoryId"  : "WORKSPACE",
+    "date"        : "2016-09-12",
+    "version"     : "1.0.0"
+}
