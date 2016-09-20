@@ -8,5 +8,16 @@
     "permissions" : [ ],
     "categoryId"  : "WORKSPACE",
     "date"        : "2016-09-12",
-    "version"     : "1.0.0"
+    "version"     : "1.0.0",
+    "screens": [{
+        "id": "my-screen",
+        "chambers": [{
+            "id": "my-chamber",
+            "js": "myChamber.js",
+            "autorun": true,
+            "focus": true,
+            "delay": 0,
+            "tabType": "tab"
+        }]
+    }]
 }
