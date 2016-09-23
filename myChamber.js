@@ -71,10 +71,7 @@ define(function (require) {
 		}
 
 		itemClick (model) {
-			dataTree.push(newTab);
-
-			this.reset(dataTree);
-            this.refresh();
+			console.log(model);
 		}
     }
 });
