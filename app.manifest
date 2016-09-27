@@ -16,8 +16,8 @@
             "js": "myChamber.js",
             "autorun": true,
             "focus": true,
-            "delay": 0,
-            "tabType": "tab"
+            "tabType": "tab",
+            "delay": 0
         }]
     }]
 }
