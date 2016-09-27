@@ -53,7 +53,7 @@ define(function (require) {
 	    {
 	    	text: 'Tab 2',
 	    	icon: `${window.MODULE_PATH}/icons/blood-sample.svg`,
-	    	enabled: false,
+	    	enabled: true,
 	    	selected: false,
 	    	_data_tree_branch: [
 	    		{
