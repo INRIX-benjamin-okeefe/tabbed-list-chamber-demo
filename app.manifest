@@ -15,9 +15,7 @@
             "id": "my-chamber",
             "js": "myChamber.js",
             "autorun": true,
-            "focus": true,
-            "tabType": "tab",
-            "delay": 0
+            "focus": true
         }]
     }]
 }
