@@ -3,25 +3,32 @@ define(function (require) {
  
     const 
     	TabbedListChamber = require('common/platform/chamber/TabbedListChamber'),
-    	newTab = {
-    		text: 'Tab 4',
-    		icon: 'arrows',
-		    enabled: true,
-		    selected: false,
-		    _data_tree_branch: [
-		    	{
-		      		text: 'New Tab Data 1'
-		    	},
-		    	{
-		      		text: 'New Tab Data 2',
-		    	},
-		    	{
-		      		text: 'New Tab Data 3',
-		      		text1: 'more new tab data text'
-		    	}
-		    ]
-    	};
+    	// Define data that will be loaded using a fetch function.
+    	cityData = [
+    		{
+				text: 'Washington',
+				text1: 'DC'
+			},
+			{
+				text: 'Baltimore',
+				text1: 'MD'
+			},
+			{
+				text: 'Philadelphia',
+				text1: 'PA'
+			},
+			{
+				text: 'New York',
+				text1: 'NY'
+			},
+			{
+				text: 'Boston',
+				text1: 'MA'
+			}
+    	];
 
+    // Define the data to be returned from the overridden data method in the class that extends TabbedListChamber.
+    // This data will be used to populate the models that back the tabs and corresponding lists.
     let dataTree = [
 	    {
 	    	text: 'Tab 1',
@@ -67,25 +74,57 @@ define(function (require) {
 	    	]
 	    },
 	    {
-	    	text: 'Fetch',
+	    	text: 'Fetch URL',
 	    	icon: 'jpy',
 	    	fetchInfo: {
 	    		url: 'localhost:3000'
 	    	}
+	    },
+	    {
+	    	text: 'Fetch Function',
+	    	fetchInfo: {
+	    		fetchFunction: "myFetchFunction"
+	    	}
 	    }
 	  ];
- 
+
+
     return class MyChamber extends TabbedListChamber {
+    	// Return an object that represents the data that will populate the list for each tab.
 		data () {
 		  return dataTree; 
 		}
 
-		tabClick (model) {
-			console.log(model);
+		// The function to be used for populating data in the fourth tab.
+		// The framework knows to execute this function because it was included
+		// in the overridden getFetchFunctions method in this class.
+		myFetchFunction () {
+			const FETCH_FUNCTION_INDEX = 3;
+
+			dataTree[FETCH_FUNCTION_INDEX]._data_tree_branch = cityData;
+			this.reset(dataTree);
+			this.refresh();
 		}
 
-		itemClick (model) {
-			console.log(model);
+		// Override getFetchFunctions.
+		// Return an object that contains fetch function names for the keys,
+		// and references to the corresponding functions for the values.
+		getFetchFunctions () {
+			return {
+				myFetchFunction: this.myFetchFunction
+			}
+		}
+
+		// Override the tabClick method, which will be called each time a tab is clicked.
+		// The argument passed to this method is the model backing the tab that was clicked.
+		tabClick (tabModel) {
+			console.log(tabModel);
+		}
+
+		// Override the itemClick method, which will be called each time a list item is clicked.
+		// The arguments passed to this method are the list control itself, and the list item that was clicked.
+		itemClick (listView, listItem) {
+			console.log(listItem);
 		}
     }
 });
