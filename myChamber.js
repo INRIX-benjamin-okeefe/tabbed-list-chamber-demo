@@ -123,7 +123,7 @@ define(function (require) {
 
 		// Override the itemClick method, which will be called each time a list item is clicked.
 		// The arguments passed to this method are the list control itself, and the list item that was clicked.
-		itemClick (listView, listItem) {
+		itemClick (listControl, listItem) {
 			console.log(listItem);
 		}
     }
