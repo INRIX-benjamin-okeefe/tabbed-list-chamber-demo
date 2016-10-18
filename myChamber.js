@@ -99,11 +99,11 @@ define(function (require) {
 		// The framework knows to execute this function because it was included
 		// in the overridden getFetchFunctions method in this class.
 		myFetchFunction () {
-			const FETCH_FUNCTION_INDEX = 3;
-
-			dataTree[FETCH_FUNCTION_INDEX]._data_tree_branch = cityData;
-			this.reset(dataTree);
-			this.refresh();
+			return new Promise(resolve => {
+				setTimeout(() => {
+					resolve(cityData);
+				}, 1000);
+			});
 		}
 
 		// Override getFetchFunctions.
